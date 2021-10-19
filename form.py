@@ -5,11 +5,39 @@ import time
 
 
 def submit(browser, classes):
+    """
+    Use to click next, or click submit.
+
+    Parameters
+    ----------
+    browser : TYPE
+        Selenium browser connection.
+    classes : list
+        List of html classes for the various input types.
+
+    Returns
+    -------
+    None.
+
+    """
     buttons = browser.find_elements_by_class_name(classes["button"])
     buttons[-1].click()
 
 
 def fill_form(url):
+    """
+    Use to fill the form.
+
+    Parameters
+    ----------
+    url : str
+        Form url.
+
+    Returns
+    -------
+    None.
+
+    """
     cont = ["Color", "Electronics", "Container", "LCD", "Design"]
     bugs = ["Doesn't count correctly, if objects are at high speed",
             "Doesn't always count correctly, if the objects are at high speed",
@@ -89,7 +117,7 @@ def fill_form(url):
 if __name__ == '__main__':
     try:
         link = sys.argv[1]
-    except Exception as e:                  # List index out of range
+    except IndexError:           # List index out of range
         link = input("Enter the form url: ")
     for i in range(15):
         print(i+1)
